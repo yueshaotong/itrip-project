@@ -7,6 +7,55 @@
 	<groupId>cn.ekgc.itrip</groupId>
 	<artifactId>itrip-parent</artifactId>
 	<version>1.0.0</version>
+	<packaging>pom</packaging>
 
+	<!-- 配置项目使用 spring boot starter parent 作为父级依赖关系 [BEGIN]-->
+	<parent>
+		<artifactId>spring-boot</artifactId>
+		<groupId>org.springframework.boot</groupId>
+		<version>2.1.12.RELEASE</version>
+	</parent>
+	<!-- 配置项目使用 spring boot starter parent 作为父级依赖关系 [END]-->
 
+	<dependencies>
+		<!-- 配置 spring boot wed 依赖关系[BEGIN]-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- 配置 spring boot wed 依赖关系[END]-->
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<!-- 配置 Spring cloud 依赖关系 [BEGIN] -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Greenwich.SR5</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- 配置 Spring cloud 依赖关系 [END] -->
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- 配置 spring boot 项目的maven打包插件 [BEGIN]-->
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<executions>
+						<execution>
+							<goals>
+								<goal>repackage</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- 配置 spring boot 项目的maven打包插件 [END]-->
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
